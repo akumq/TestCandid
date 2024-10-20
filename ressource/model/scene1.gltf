@@ -18,20 +18,10 @@
 				{
 					"color":[
 						1,
-						1,
-						1
-					],
-					"intensity":0.25,
-					"type":"directional",
-					"name":"Sun"
-				},
-				{
-					"color":[
-						1,
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point"
@@ -42,7 +32,7 @@
 						0.22098472714424133,
 						0.18219947814941406
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"spot":{
 						"innerConeAngle":0.3337942263919169,
 						"outerConeAngle":0.39269909262657166
@@ -56,7 +46,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.001"
@@ -67,7 +57,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.002"
@@ -78,7 +68,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.003"
@@ -89,7 +79,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.004"
@@ -100,7 +90,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.005"
@@ -111,7 +101,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.006"
@@ -122,7 +112,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.007"
@@ -133,7 +123,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.008"
@@ -144,7 +134,7 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.009"
@@ -155,10 +145,20 @@
 						0.5715517401695251,
 						0.3470372259616852
 					],
-					"intensity":0.5,
+					"intensity":0.45,
 					"type":"point",
 					"range":42.70000076293945,
 					"name":"Point.010"
+				},
+				{
+					"color":[
+						1,
+						1,
+						1
+					],
+					"intensity":0.2,
+					"type":"directional",
+					"name":"Sun"
 				}
 			]
 		}
@@ -2783,25 +2783,6 @@
 			]
 		},
 		{
-			"extensions":{
-				"KHR_lights_punctual":{
-					"light":0
-				}
-			},
-			"name":"Sun",
-			"rotation":[
-				-0.7071068286895752,
-				0,
-				0,
-				0.7071068286895752
-			],
-			"translation":[
-				2.365828514099121,
-				7.001133441925049,
-				-0.13122637569904327
-			]
-		},
-		{
 			"mesh":9,
 			"name":"Manoir.009",
 			"rotation":[
@@ -2864,7 +2845,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":1
+					"light":0
 				}
 			},
 			"name":"Point",
@@ -2883,7 +2864,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":2
+					"light":1
 				}
 			},
 			"name":"Spot",
@@ -2907,7 +2888,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":3
+					"light":2
 				}
 			},
 			"name":"Point.001",
@@ -2926,7 +2907,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":4
+					"light":3
 				}
 			},
 			"name":"Point.002",
@@ -2945,7 +2926,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":5
+					"light":4
 				}
 			},
 			"name":"Point.003",
@@ -2964,7 +2945,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":6
+					"light":5
 				}
 			},
 			"name":"Point.004",
@@ -2983,7 +2964,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":7
+					"light":6
 				}
 			},
 			"name":"Point.005",
@@ -3017,7 +2998,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":8
+					"light":7
 				}
 			},
 			"name":"Point.006",
@@ -3036,7 +3017,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":9
+					"light":8
 				}
 			},
 			"name":"Point.007",
@@ -3055,7 +3036,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":10
+					"light":9
 				}
 			},
 			"name":"Point.008",
@@ -3074,7 +3055,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":11
+					"light":10
 				}
 			},
 			"name":"Point.009",
@@ -3093,7 +3074,7 @@
 		{
 			"extensions":{
 				"KHR_lights_punctual":{
-					"light":12
+					"light":11
 				}
 			},
 			"name":"Point.010",
@@ -3107,6 +3088,25 @@
 				4.40792989730835,
 				3.650726079940796,
 				2.783618211746216
+			]
+		},
+		{
+			"extensions":{
+				"KHR_lights_punctual":{
+					"light":12
+				}
+			},
+			"name":"Sun",
+			"rotation":[
+				-0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
+			],
+			"translation":[
+				2.365828514099121,
+				7.001133441925049,
+				-0.13122637569904327
 			]
 		}
 	],
@@ -7498,7 +7498,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{
@@ -7521,7 +7520,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{
@@ -7544,7 +7542,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{
@@ -7590,7 +7587,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{
@@ -7613,7 +7609,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{
@@ -7636,7 +7631,6 @@
 			}
 		},
 		{
-			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"extensions":{
 				"KHR_materials_specular":{

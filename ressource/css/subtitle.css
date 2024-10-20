@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+
+.subtitles {
+    top: 85%;
+    width: 100%;
+    text-align: center;
+    /* background-color: rgba(120, 129, 150, 0.4); */
+    color: white;
+    font-family: "Schoolbell", cursive;
+    font-weight: 400;
+    font-size: 2rem;
+    font-style: normal;
+    position: absolute;
+}
