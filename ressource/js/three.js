@@ -47,10 +47,30 @@ let position = 0;
 let mixer;
 
 const gltfLoader = new GLTFLoader();
-gltfLoader.load('ressource/model/scene1.gltf', function(data) {
+gltfLoader.load('ressource/model/scene2/scene.gltf', function(data) {
 
     const gltf = data;
     const object = gltf.scene;
+    console.log(object)
+
+    object.traverse((child) => {
+        if (child.isMesh) {
+            // Check if the mesh has a material
+            if (child.material) {
+                // Create a new toon shader material
+                const toonMaterial = new THREE.MeshToonMaterial({
+                    color: child.material.color,
+                    map: child.material.map,
+                    transparent: child.material.transparent,
+                    opacity: child.material.opacity,
+                    // Add other properties as needed
+                });
+
+                // Replace the original material with the toon material
+                child.material = toonMaterial;
+            }
+        }
+    });
     
     // scaling my models right down removes artefacts
     const modScale = 0.00009;
@@ -61,11 +81,15 @@ gltfLoader.load('ressource/model/scene1.gltf', function(data) {
 
     mixer = new THREE.AnimationMixer(gltf.scene);
     const clips = gltf.animations;
-    const clip = THREE.AnimationClip.findByName(clips,"Hanabi Hyuga_armAction");
+    const clip = THREE.AnimationClip.findByName(clips,"EyesOpen");
     const action = mixer.clipAction(clip);
-
     action.play();
-    console.log(clips)
+    console.log(action)
+    // const clip = THREE.AnimationClip.findByName(clips,"Hanabi Hyuga_armAction");
+    // const action = mixer.clipAction(clip);
+
+    // action.play();
+
 
 
 
@@ -74,11 +98,6 @@ gltfLoader.load('ressource/model/scene1.gltf', function(data) {
             cameraList.push(object);
         }
     });
-
-
- 
-
-
 
     const camPosOriginX = cameraList[0].position.x;
     const camPosOriginY = cameraList[0].position.y;
@@ -97,7 +116,7 @@ gltfLoader.load('ressource/model/scene1.gltf', function(data) {
         console.log(position);
         switch(position){
             case 0:
-                
+
                 moveCamera(
                     camPosOriginX,
                     camPosOriginY,
@@ -121,7 +140,7 @@ gltfLoader.load('ressource/model/scene1.gltf', function(data) {
                     cameraList[1].rotation.y,
                     cameraList[1].rotation.z,
                 );
-                position = 0;
+                // position = 0;
                 console.log(camera)
                 updateCameraAspect(camera);
                 break;
