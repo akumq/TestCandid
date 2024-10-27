@@ -11,4 +11,5 @@
     font-size: 2rem;
     font-style: normal;
     position: absolute;
+    z-index: 99;
 }
