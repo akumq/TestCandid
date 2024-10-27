@@ -56,11 +56,19 @@ const scene2 = new Scene(
 let currentScene = null;
 
 // Switch to the first scene when the page loads
-scene1.switchTo(currentScene,camera,scene,mixer,() => {
+await scene2.switchTo(currentScene,camera,scene,mixer,() => {
     console.log("scene 1 load")
-    scene2.switchTo(currentScene,camera,scene,mixer,() => {
-        console.log("finish")
-    });
+    // scene2.switchTo(currentScene,camera,scene,mixer,() => {
+    //     console.log("finish")
+    // });
+}).then((scene)=>{
+  console.log(scene)
+  // const clips = scene.animations;
+  // console.log(currentScene.animations)
+  // const clip = THREE.AnimationClip.findByName(currentScene.animations,"Hanabi Hyuga_armAction");
+  // const action = mixer.clipAction(clip);
+  // action.play();
+  // console.log(action)
 });
 
 

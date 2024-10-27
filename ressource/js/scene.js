@@ -35,6 +35,7 @@ class Scene {
     const gltfLoader = new GLTFLoader();
     const gltf = await gltfLoader.loadAsync(this.scenePath);
     this.scene = gltf.scene;
+    this.animations = gltf.animations;
 
     // Extract the camera positions from the scene and create CamKeyFrame objects
     let firstCameraFound = false
@@ -76,15 +77,14 @@ class Scene {
     });
 
     // Extract the animation clips from the scene
-    this.animationClips = gltf.animations;
-    this.animations = this.animationClips.map(clip => {
-      return {
-        clip: clip,
-        action: mixer.clipAction(clip)
-      };
-    });
+    // this.animationClips = gltf.animations;
+    // this.animations = this.animationClips.map(clip => {
+    //   return {
+    //     clip: clip,
+    //     action: mixer.clipAction(clip)
+    //   };
+    // });
 
-    console.log(this.animations)
     // Load the subtitles
     const response = await fetch(this.subtitlePath);
     const srtContent = await response.text();
@@ -100,7 +100,7 @@ class Scene {
 
   }
 
-  unload(scene,mixer) {
+  unload(scene) {
     // Remove the scene from the Three.js scene
     scene.remove(this.scene);
 
@@ -135,7 +135,7 @@ class Scene {
 
      // Unload the current scene
      if (currentScene) {
-        currentScene.unload(mixer);
+        currentScene.unload();
       }
 
     // Load the new scene
@@ -146,6 +146,7 @@ class Scene {
 
     // Start displaying the subtitles for the new scene
     startSubtitles(this.subtitles,onFinish);
+
     Scene.clearThree(scene)
     scene.add(this.scene);
 
@@ -168,15 +169,18 @@ class Scene {
     });
 
     // Play the animations for the new scene at the specified time
-    this.animations.forEach(animation => {
-      animation.action.reset();
-      animation.action.play();
-    });
+    // this.animations.forEach(animation => {
+    //   animation.action.reset();
+    //   animation.action.play();
+    // });
 
 
     // Update the current scene
     currentScene = this;
 
+    return new Promise((resolve) => {
+        resolve(scene);
+    });
   }
 }
 
@@ -290,13 +294,11 @@ function startSubtitles(subtitles, onFinish) {
         onFinish();
       }
     }
-  
-    document.addEventListener('click', () => {
-      if (!startTime) {
-        startTime = Date.now();
-        intervalId = setInterval(updateSubtitles, 100);
-      }
-    });
+    
+    if (!startTime) {
+      startTime = Date.now();
+      intervalId = setInterval(updateSubtitles, 100);
+    }
 }
 
 // Export the Scene class and the global functions

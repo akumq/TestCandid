@@ -51,7 +51,6 @@ gltfLoader.load('ressource/model/scene2/scene.gltf', function(data) {
 
     const gltf = data;
     const object = gltf.scene;
-    console.log(object)
 
     object.traverse((child) => {
         if (child.isMesh) {
@@ -84,7 +83,6 @@ gltfLoader.load('ressource/model/scene2/scene.gltf', function(data) {
     const clip = THREE.AnimationClip.findByName(clips,"EyesOpen");
     const action = mixer.clipAction(clip);
     action.play();
-    console.log(action)
     // const clip = THREE.AnimationClip.findByName(clips,"Hanabi Hyuga_armAction");
     // const action = mixer.clipAction(clip);
 
