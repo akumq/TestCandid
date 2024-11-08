@@ -1,26 +1,6 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
-
-class EventEmitter {
-  constructor() {
-    this.events = {};
-  }
-
-  on(event, listener) {
-    if (!this.events[event]) {
-      this.events[event] = [];
-    }
-    this.events[event].push(listener);
-  }
-
-  emit(event, ...args) {
-    if (this.events[event]) {
-      this.events[event].forEach((listener) => {
-        listener(...args);
-      });
-    }
-  }
-}
+import { EventEmitter } from "./eventEmitter.js"
 
 class CamKeyFrame extends THREE.Vector3 {
   constructor(position, rotation, time, duration) {
@@ -74,13 +54,10 @@ export class Scene {
 
   load() {
     return new Promise((resolve, reject) => {
-      // Load GLTF model
       const gltfLoader = new GLTFLoader();
       gltfLoader.load(
         this.gltfPath,
         (data) => {
-
-          // Add model to scene
           const object = data.scene;
           if(this.params.toons){
             object.traverse((child) => {
@@ -93,7 +70,6 @@ export class Scene {
                     transparent: material.transparent,
                     opacity: material.opacity,
                     skinning: true,
-                    // Add other properties as needed
                   });
                   child.material = toonMaterial;
                 }
@@ -115,7 +91,6 @@ export class Scene {
             this.scene.fog = new THREE.Fog( this.params.fog.color, this.params.fog.near, this.params.fog.far );
           }
 
-          // Extract cameras from model
           object.traverse((child) => {
             if (child.isCamera) {
               const position = child.position.clone();
@@ -131,13 +106,11 @@ export class Scene {
             }
           });
 
-          // Set the initial camera position to the position of the first camera in the camera list
           if (this.cameraKeyFrames.length > 0) {
             this.camera.position.copy(this.cameraKeyFrames[0].position);
             this.camera.rotation.copy(this.cameraKeyFrames[0].rotation);
           }
 
-          // Extract animations from model
           this.mixer = new THREE.AnimationMixer(object);
           data.animations.forEach((clip) => {
             const action = this.mixer.clipAction(clip);
@@ -147,20 +120,19 @@ export class Scene {
             action.play();
           });
 
-          // Listen for animation finish event
           this.mixer.addEventListener("finished", () => {
             this.animationFinished = true;
             this.checkFinished();
           });
 
-          // Load subtitles and audio if provided
           if (this.srtPath) {
             fetch(this.srtPath)
               .then((response) => response.text())
               .then((data) => {
                 this.subtitles = this.parseSrt(data);
                 this.subtitleElement = document.getElementById("sub_text");
-                // Add event listener for click event
+                // Event Scene (AwaitForclick)
+                this.eventEmitter.emit("awaitClick");
                 document.addEventListener(
                   "click",
                   () => {
@@ -255,13 +227,13 @@ export class Scene {
   }
 
   handleClick() {
-    // Start displaying subtitles
+    // Event Scene (click)
+    this.eventEmitter.emit("click");
     if (!this.startTime) {
       this.startTime = Date.now();
       this.intervalId = setInterval(() => {
         const currentTime = Date.now() - this.startTime;
         this.displaySubtitle(currentTime);
-        // Stop subtitles after the last subtitle has been displayed
         if (currentTime >= this.subtitles[this.subtitles.length - 1].end) {
           clearInterval(this.intervalId);
           this.startTime = null;
@@ -273,7 +245,6 @@ export class Scene {
       }, 100);
     }
 
-    // Start camera interpolation
     this.interpolateCamera();
   }
 
@@ -332,7 +303,6 @@ export class Scene {
       this.subtitleElement.textContent = subtitle.text;
       this.isSubtitlePlaying = true;
     } else {
-      // Keep the last subtitle displayed until the next one starts
       if (this.isSubtitlePlaying) {
         const nextSubtitle = this.subtitles.find((s) => s.start > currentTime);
         if (!nextSubtitle || nextSubtitle.start > currentTime + 100) {

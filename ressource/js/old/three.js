@@ -48,7 +48,6 @@ let mixer;
 
 const gltfLoader = new GLTFLoader();
 gltfLoader.load('ressource/model/scene2/scene.gltf', function(data) {
-
     const gltf = data;
     const object = gltf.scene;
 

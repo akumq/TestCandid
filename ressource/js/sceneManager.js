@@ -1,5 +1,6 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 import { Scene } from "./scene.js";
+import { EventEmitter } from "./eventEmitter.js";
 
 export class SceneManager {
   constructor(renderer, camera) {
@@ -13,6 +14,7 @@ export class SceneManager {
     this.clock = new THREE.Clock();
     this.scenes = [];
     this.currentSceneIndex = 0;
+    this.eventEmitter = new EventEmitter();
 
     // Add window resize event listener
     window.addEventListener("resize", () => {
@@ -27,12 +29,15 @@ export class SceneManager {
   }
 
   loadNextScene() {
+    this.eventEmitter.emit("nextScene",this.currentSceneIndex + 1)
     if (this.currentSceneIndex < this.scenes.length - 1) {
       this.currentSceneIndex++;
+
       const { gltfPath, srtPath, audioPath, params } = this.scenes[this.currentSceneIndex];
       this.loadScene(gltfPath, srtPath, audioPath, params);
     } else {
-      this.renderer.domElement.remove();
+      // this.renderer.domElement.remove();
+      this.eventEmitter.emit("noSceneLeft")
     }
   }
 
