@@ -10,13 +10,16 @@ function startAnimation(){
     document.body.appendChild(renderer.domElement);
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+    
 
     const sceneManager = new SceneManager(renderer, camera);
 
     // Add scenes to the scene manager
-    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true });
-    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false });
+    // sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+
+    sceneManager.addScene('ressource/model/foret/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:true, });
+    // sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false, toons:true, });
+    // sceneManager.addScene('ressource/model/perso/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, toons:true, });
 
     // Load the first scene
     sceneManager.loadScene(

@@ -32,7 +32,7 @@ export class SceneManager {
       const { gltfPath, srtPath, audioPath, params } = this.scenes[this.currentSceneIndex];
       this.loadScene(gltfPath, srtPath, audioPath, params);
     } else {
-        this.renderer.domElement.remove();
+      this.renderer.domElement.remove();
     }
   }
 

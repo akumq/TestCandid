@@ -39,7 +39,8 @@ export class Scene {
     gltfPath,
     srtPath = null,
     audioPath = null,
-    params = {}
+    params = {},
+    skybox = [],
   ) {
     this.renderer = renderer;
     this.camera = camera;
@@ -60,6 +61,14 @@ export class Scene {
     this.audioFinished = false;
     this.subtitlesFinished = false;
     this.animationFinished = false;
+    this.skybox = [
+      "yonder_ft.jpg",
+      "yonder_bk.jpg",
+      "yonder_up.jpg",
+      "yonder_dn.jpg",
+      "yonder_rt.jpg",
+      "yonder_lf.jpg",
+    ];
     this.params = params;
   }
 
@@ -70,26 +79,41 @@ export class Scene {
       gltfLoader.load(
         this.gltfPath,
         (data) => {
+
           // Add model to scene
           const object = data.scene;
-          object.traverse((child) => {
-            if (child.isMesh) {
-              const material = child.material;
-              if (material) {
-                const toonMaterial = new THREE.MeshToonMaterial({
-                  color: material.color,
-                  map: material.map,
-                  transparent: material.transparent,
-                  opacity: material.opacity,
-                  skinning: true,
-                  // Add other properties as needed
-                });
-                child.material = toonMaterial;
+          if(this.params.toons){
+            object.traverse((child) => {
+              if (child.isMesh) {
+                const material = child.material;
+                if (material) {
+                  const toonMaterial = new THREE.MeshToonMaterial({
+                    color: material.color,
+                    map: material.map,
+                    transparent: material.transparent,
+                    opacity: material.opacity,
+                    skinning: true,
+                    // Add other properties as needed
+                  });
+                  child.material = toonMaterial;
+                }
               }
-            }
-          });
-          this.scene.add(object);
+            });
+          }
           
+          this.scene.add(object);
+          if (this.params.skybox) {
+            var skyBox = new THREE.CubeTextureLoader()
+            .setPath('ressource/skybox/')
+            .load(this.skybox);
+  
+            this.scene.background = skyBox;
+          }
+
+
+          if (this.params.fog != null){
+            this.scene.fog = new THREE.Fog( this.params.fog.color, this.params.fog.near, this.params.fog.far );
+          }
 
           // Extract cameras from model
           object.traverse((child) => {
@@ -209,8 +233,8 @@ export class Scene {
       return;
     }
 
-    const currentSubtitle = this.subtitles[this.currentSubtitleIndex];
-    const duration = (currentSubtitle.end - currentSubtitle.start) / 1000; // convert to seconds
+    const lastSubtitle = this.subtitles[this.subtitles.length -1];
+    const duration = lastSubtitle.end /1000; // convert to seconds
 
     this.cameraKeyFrames.forEach((keyFrame) => {
       gsap.to(this.camera.rotation, {
