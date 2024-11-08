@@ -3,6 +3,7 @@ import { SceneManager } from './sceneManager.js';
 
 function fadeOutTitle(query) {
     const title = document.querySelector(query);
+    title.classList.remove('fadeIn');
     title.classList.add('fadeOut');
 
     setTimeout(() => {
@@ -14,6 +15,7 @@ function fadeInTitle(query) {
     const title = document.querySelector(query);
     
     title.classList.remove('hidden');
+    title.classList.remove('fadeOut');
     title.classList.add('fadeIn');
 }
 
@@ -49,15 +51,20 @@ function startAnimation(){
         sceneManager.eventEmitter.on("nextScene",(index) => {
             switch(index){
                 case 1:
-                    const titles = document.querySelectorAll('.NrTitle');
-                    titles.forEach(title => {
-                        title.classList.remove('hidden');
-                    });
                     fadeOutTitle('.TitrePrincipale')
                     setTimeout(()=>{
                         fadeInTitle('.NrTitle')
                     },500)
 
+                    break;
+                case 3:
+                    fadeOutTitle("#Chapitre")
+
+                    setTimeout(()=>{
+                        const chapitre = document.querySelector("#Chapitre")
+                        chapitre.innerHTML = "Projet"
+                        fadeInTitle("#Chapitre")
+                    },3000)
                     break;
             }
 
