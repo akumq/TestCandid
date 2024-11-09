@@ -39,7 +39,8 @@ function startAnimation(){
     // sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false, toons:true, });
     sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/introduction.srt', '',{ loop: false, toons:true, });
     sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-    sceneManager.addScene('ressource/model/foret/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, });
+    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/foret/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: false, toons:true, });
 
     // Load the first scene
     sceneManager.loadScene(
@@ -63,7 +64,7 @@ function startAnimation(){
                     setTimeout(()=>{
                         const chapitre = document.querySelector("#Chapitre")
                         chapitre.innerHTML = "Projet"
-                        fadeInTitle("#Chapitre")
+                        fadeInTitle('.NrTitle')
                     },3000)
                     break;
             }

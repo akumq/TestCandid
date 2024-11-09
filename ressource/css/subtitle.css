@@ -12,4 +12,5 @@
     font-style: normal;
     position: absolute;
     z-index: 99;
+    mix-blend-mode:difference;
 }
