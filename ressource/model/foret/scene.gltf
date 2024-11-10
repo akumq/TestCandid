@@ -20,7 +20,7 @@
 						1,
 						1
 					],
-					"intensity":1,
+					"intensity":0.0014641288665026989,
 					"spot":{
 						"innerConeAngle":0.3337942263919169,
 						"outerConeAngle":0.39269909262657166
@@ -30,13 +30,23 @@
 				},
 				{
 					"color":[
+						0.015311245806515217,
 						1,
-						1,
-						1
+						0.017997341230511665
 					],
-					"intensity":1,
+					"intensity":0.13528170542266058,
+					"type":"point",
+					"name":"Point.001"
+				},
+				{
+					"color":[
+						0.5,
+						0.5,
+						0.5
+					],
+					"intensity":3,
 					"type":"directional",
-					"name":"Sun"
+					"name":"Sun.001"
 				}
 			]
 		}
@@ -45,6 +55,9 @@
 	"scenes":[
 		{
 			"extras":{
+				"show_mmd_tabs":1,
+				"embed_textures":0,
+				"ui_lang":0,
 				"vs":{
 					"export_list":[
 						{
@@ -186,26 +199,49 @@
 				5,
 				6,
 				7,
-				8
+				8,
+				9,
+				10
 			]
 		}
 	],
 	"nodes":[
 		{
+			"name":"scene.gltf"
+		},
+		{
+			"extras":{
+				"name":"7_+Cursed Seal.Cursed Seal_1_0_0"
+			},
 			"mesh":0,
-			"name":"for\u00eat"
+			"name":"Cursed",
+			"scale":[
+				43.3349609375,
+				43.3349609375,
+				43.3349609375
+			],
+			"translation":[
+				0,
+				1.3952350616455078,
+				0.7112438678741455
+			]
 		},
 		{
 			"mesh":1,
-			"name":"cascade"
+			"name":"for\u00eat"
 		},
 		{
 			"mesh":2,
-			"name":"riviere"
+			"name":"cascade",
+			"translation":[
+				0,
+				-0.0822911188006401,
+				0
+			]
 		},
 		{
 			"mesh":3,
-			"name":"MOUSSE"
+			"name":"riviere"
 		},
 		{
 			"extensions":{
@@ -216,8 +252,8 @@
 			"name":"Spot",
 			"rotation":[
 				-0.7507387399673462,
-				-0.0225694477558136,
-				0.11203692108392715,
+				-0.022569449618458748,
+				0.11203695833683014,
 				0.6506379842758179
 			],
 			"translation":[
@@ -227,9 +263,81 @@
 			]
 		},
 		{
+			"camera":0,
+			"name":"Camera.003",
+			"rotation":[
+				-0.03950115665793419,
+				-0.42375728487968445,
+				-0.018501698970794678,
+				0.9047248959541321
+			],
+			"translation":[
+				-9.049222946166992,
+				2.505638837814331,
+				7.1612701416015625
+			]
+		},
+		{
+			"camera":1,
+			"name":"Camera.001",
+			"rotation":[
+				-0.03869572654366493,
+				0.46109476685523987,
+				0.020131809636950493,
+				0.8862781524658203
+			],
+			"translation":[
+				9.606585502624512,
+				2.042073965072632,
+				7.1612701416015625
+			]
+		},
+		{
+			"extras":{
+				"name":"7_+Cursed Seal.Cursed Seal_1_0_0"
+			},
+			"mesh":4,
+			"name":"Cursed.001",
+			"rotation":[
+				0,
+				-1,
+				0,
+				4.371138828673793e-08
+			],
+			"scale":[
+				43.3349609375,
+				43.3349609375,
+				43.3349609375
+			],
+			"translation":[
+				0,
+				1.3952350616455078,
+				-0.4684683084487915
+			]
+		},
+		{
 			"extensions":{
 				"KHR_lights_punctual":{
 					"light":1
+				}
+			},
+			"name":"Point",
+			"rotation":[
+				-0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
+			],
+			"translation":[
+				0,
+				0.6135210990905762,
+				0
+			]
+		},
+		{
+			"extensions":{
+				"KHR_lights_punctual":{
+					"light":2
 				}
 			},
 			"name":"Sun",
@@ -241,82 +349,27 @@
 			],
 			"translation":[
 				0,
-				9.663162231445312,
+				7.186343193054199,
 				0
-			]
-		},
-		{
-			"camera":0,
-			"name":"Camera",
-			"rotation":[
-				-0.04258544370532036,
-				0.21623362600803375,
-				0.009440965950489044,
-				0.9753668308258057
-			],
-			"translation":[
-				5.844974517822266,
-				2.0041751861572266,
-				11.873162269592285
-			]
-		},
-		{
-			"camera":1,
-			"name":"Camera.001",
-			"rotation":[
-				-0.03869574889540672,
-				0.46109479665756226,
-				0.02013183757662773,
-				0.8862781524658203
-			],
-			"translation":[
-				9.606585502624512,
-				2.042073965072632,
-				7.1612701416015625
-			]
-		},
-		{
-			"camera":2,
-			"name":"Camera.002",
-			"rotation":[
-				-0.015666818246245384,
-				-0.9834445714950562,
-				-0.14697673916816711,
-				0.10482916235923767
-			],
-			"translation":[
-				-2.04085636138916,
-				7.442634582519531,
-				-7.999235153198242
 			]
 		}
 	],
 	"cameras":[
 		{
-			"name":"Camera",
-			"perspective":{
-				"aspectRatio":1.7777777777777777,
-				"yfov":0.39959652046304894,
-				"zfar":1000,
-				"znear":0.10000000149011612
-			},
-			"type":"perspective"
-		},
-		{
 			"name":"Camera.002",
 			"perspective":{
 				"aspectRatio":1.7777777777777777,
-				"yfov":0.39959652046304894,
+				"yfov":0.39959651231765747,
 				"zfar":1000,
 				"znear":0.10000000149011612
 			},
 			"type":"perspective"
 		},
 		{
-			"name":"Camera.003",
+			"name":"Camera.004",
 			"perspective":{
 				"aspectRatio":1.7777777777777777,
-				"yfov":0.39959652046304894,
+				"yfov":0.39959651231765747,
 				"zfar":1000,
 				"znear":0.10000000149011612
 			},
@@ -325,21 +378,28 @@
 	],
 	"materials":[
 		{
-			"alphaCutoff":0.5,
-			"alphaMode":"MASK",
-			"name":"material_atlas_00002_1",
+			"alphaMode":"BLEND",
+			"emissiveFactor":[
+				0.004776953253895044,
+				0.17464740574359894,
+				0.0003035269910469651
+			],
+			"name":"Material_8",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
 					"index":0
 				},
-				"metallicFactor":0,
+				"metallicFactor":0.5,
 				"roughnessFactor":0.5
 			}
 		},
 		{
 			"alphaCutoff":0.5,
 			"alphaMode":"MASK",
-			"name":"material_atlas_00003_1",
+			"extras":{
+				"mmd_material":{}
+			},
+			"name":"material_atlas_00002_1",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
 					"index":1
@@ -352,9 +412,9 @@
 			"alphaMode":"BLEND",
 			"doubleSided":true,
 			"emissiveFactor":[
-				0.01038549893612617,
-				0.1547374969668045,
-				0.14728118665173184
+				0.010385499335825443,
+				0.15473750233650208,
+				0.14728118479251862
 			],
 			"extensions":{
 				"KHR_materials_specular":{
@@ -416,76 +476,48 @@
 		},
 		{
 			"alphaMode":"BLEND",
-			"doubleSided":true,
-			"extensions":{
-				"KHR_materials_specular":{
-					"specularColorFactor":[
-						1.6815080777759979,
-						1.6815080777759979,
-						1.6815080777759979
-					]
-				},
-				"KHR_materials_ior":{
-					"ior":1.4500000476837158
-				}
-			},
-			"extras":{
-				"mmd_material":{
-					"name_j":"Material39",
-					"name_e":"",
-					"ambient_color":[
-						0.24313730001449585,
-						0.24313730001449585,
-						0.24313730001449585
-					],
-					"diffuse_color":[
-						0.3568628132343292,
-						0.3568628132343292,
-						0.3568628132343292
-					],
-					"alpha":1.0,
-					"specular_color":[
-						0.0,
-						0.0,
-						0.0
-					],
-					"shininess":92.1568603515625,
-					"is_double_sided":1,
-					"enabled_drop_shadow":0,
-					"enabled_self_shadow_map":1,
-					"enabled_self_shadow":0,
-					"enabled_toon_edge":0,
-					"edge_color":[
-						0.0,
-						0.0,
-						0.0,
-						1.0
-					],
-					"edge_weight":4.0,
-					"comment":"",
-					"is_shared_toon_texture":0,
-					"sphere_texture_type":1
-				}
-			},
-			"name":"mousse",
+			"emissiveFactor":[
+				0.004776953253895044,
+				0.17464740574359894,
+				0.0003035269910469651
+			],
+			"name":"Material_8.001",
 			"pbrMetallicRoughness":{
-				"metallicFactor":0,
+				"baseColorTexture":{
+					"index":3
+				},
+				"metallicFactor":0.5,
 				"roughnessFactor":0.5
 			}
 		}
 	],
 	"meshes":[
 		{
+			"name":"Mesh_8",
+			"primitives":[
+				{
+					"attributes":{
+						"COLOR_0":0,
+						"POSITION":1,
+						"NORMAL":2,
+						"TEXCOORD_0":3
+					},
+					"indices":4,
+					"material":0
+				}
+			]
+		},
+		{
 			"name":"The Waterfall of Truth",
 			"primitives":[
 				{
 					"attributes":{
-						"POSITION":0,
-						"NORMAL":1,
-						"TEXCOORD_0":2
+						"POSITION":5,
+						"NORMAL":6,
+						"TEXCOORD_0":7
 					},
-					"indices":3,
-					"material":0
+					"indices":8,
+					"material":1
 				}
 			]
 		},
@@ -494,12 +526,12 @@
 			"primitives":[
 				{
 					"attributes":{
-						"POSITION":4,
-						"NORMAL":5,
-						"TEXCOORD_0":6
+						"POSITION":9,
+						"NORMAL":10,
+						"TEXCOORD_0":11
 					},
-					"indices":7,
-					"material":1
+					"indices":12,
+					"material":2
 				}
 			]
 		},
@@ -508,25 +540,26 @@
 			"primitives":[
 				{
 					"attributes":{
-						"POSITION":8,
-						"NORMAL":9,
-						"TEXCOORD_0":10
+						"POSITION":13,
+						"NORMAL":14,
+						"TEXCOORD_0":15
 					},
-					"indices":11,
+					"indices":16,
 					"material":2
 				}
 			]
 		},
 		{
-			"name":"The Waterfall of Truth.008",
+			"name":"Mesh_8.001",
 			"primitives":[
 				{
 					"attributes":{
-						"POSITION":12,
-						"NORMAL":13,
-						"TEXCOORD_0":14
+						"COLOR_0":17,
+						"POSITION":18,
+						"NORMAL":19,
+						"TEXCOORD_0":20
 					},
-					"indices":11,
+					"indices":4,
 					"material":3
 				}
 			]
@@ -544,18 +577,22 @@
 		{
 			"sampler":0,
 			"source":2
+		},
+		{
+			"sampler":0,
+			"source":0
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/png",
-			"name":"Atlas_00002",
-			"uri":"Atlas_00002.png"
+			"name":"Image_1",
+			"uri":"Image_1.png"
 		},
 		{
 			"mimeType":"image/png",
-			"name":"Atlas_00003",
-			"uri":"Atlas_00003.png"
+			"name":"Atlas_00002",
+			"uri":"Atlas_00002.png"
 		},
 		{
 			"mimeType":"image/png",
@@ -566,6 +603,47 @@
 	"accessors":[
 		{
 			"bufferView":0,
+			"componentType":5123,
+			"count":45,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":1,
+			"componentType":5126,
+			"count":45,
+			"max":[
+				0.06020442768931389,
+				0.01798534393310547,
+				0.01314440369606018
+			],
+			"min":[
+				-0.06020442023873329,
+				-0.020850539207458496,
+				-0.021192818880081177
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":2,
+			"componentType":5126,
+			"count":45,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":3,
+			"componentType":5126,
+			"count":45,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":4,
+			"componentType":5123,
+			"count":168,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":5,
 			"componentType":5126,
 			"count":370980,
 			"max":[
@@ -581,25 +659,25 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":1,
+			"bufferView":6,
 			"componentType":5126,
 			"count":370980,
 			"type":"VEC3"
 		},
 		{
-			"bufferView":2,
+			"bufferView":7,
 			"componentType":5126,
 			"count":370980,
 			"type":"VEC2"
 		},
 		{
-			"bufferView":3,
+			"bufferView":8,
 			"componentType":5125,
 			"count":370980,
 			"type":"SCALAR"
 		},
 		{
-			"bufferView":4,
+			"bufferView":9,
 			"componentType":5126,
 			"count":6153,
 			"max":[
@@ -615,175 +693,218 @@
 			"type":"VEC3"
 		},
 		{
-			"bufferView":5,
-			"componentType":5126,
-			"count":6153,
-			"type":"VEC3"
-		},
-		{
-			"bufferView":6,
-			"componentType":5126,
-			"count":6153,
-			"type":"VEC2"
-		},
-		{
-			"bufferView":7,
-			"componentType":5123,
-			"count":6153,
-			"type":"SCALAR"
-		},
-		{
-			"bufferView":8,
-			"componentType":5126,
-			"count":3666,
-			"max":[
-				9.844130516052246,
-				2.6251003742218018,
-				90.1423110961914
-			],
-			"min":[
-				-135.63015747070312,
-				-0.08750399202108383,
-				-14.861709594726562
-			],
-			"type":"VEC3"
-		},
-		{
-			"bufferView":9,
-			"componentType":5126,
-			"count":3666,
-			"type":"VEC3"
-		},
-		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":3666,
-			"type":"VEC2"
+			"count":6153,
+			"type":"VEC3"
 		},
 		{
 			"bufferView":11,
-			"componentType":5123,
-			"count":3666,
-			"type":"SCALAR"
+			"componentType":5126,
+			"count":6153,
+			"type":"VEC2"
 		},
 		{
 			"bufferView":12,
-			"componentType":5126,
-			"count":3666,
-			"max":[
-				9.844130516052246,
-				2.6251003742218018,
-				90.1423110961914
-			],
-			"min":[
-				-135.63015747070312,
-				-0.08750399202108383,
-				-14.861709594726562
-			],
-			"type":"VEC3"
+			"componentType":5123,
+			"count":6153,
+			"type":"SCALAR"
 		},
 		{
 			"bufferView":13,
 			"componentType":5126,
 			"count":3666,
+			"max":[
+				9.844130516052246,
+				2.6251003742218018,
+				90.1423110961914
+			],
+			"min":[
+				-135.63015747070312,
+				-0.08750399202108383,
+				-14.861709594726562
+			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":14,
 			"componentType":5126,
 			"count":3666,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":15,
+			"componentType":5126,
+			"count":3666,
+			"type":"VEC2"
+		},
+		{
+			"bufferView":16,
+			"componentType":5123,
+			"count":3666,
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":17,
+			"componentType":5123,
+			"count":45,
+			"normalized":true,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":18,
+			"componentType":5126,
+			"count":45,
+			"max":[
+				0.06020442768931389,
+				0.01798534393310547,
+				0.01314440369606018
+			],
+			"min":[
+				-0.06020442023873329,
+				-0.020850539207458496,
+				-0.021192818880081177
+			],
+			"type":"VEC3"
+		},
+		{
+			"bufferView":19,
+			"componentType":5126,
+			"count":45,
+			"type":"VEC3"
+		},
+		{
+			"bufferView":20,
+			"componentType":5126,
+			"count":45,
 			"type":"VEC2"
 		}
 	],
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":4451760,
+			"byteLength":360,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
+			"byteLength":540,
+			"byteOffset":360,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":540,
+			"byteOffset":900,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":360,
+			"byteOffset":1440,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":336,
+			"byteOffset":1800,
+			"target":34963
+		},
+		{
+			"buffer":0,
 			"byteLength":4451760,
-			"byteOffset":4451760,
+			"byteOffset":2136,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":4451760,
+			"byteOffset":4453896,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":2967840,
-			"byteOffset":8903520,
+			"byteOffset":8905656,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":1483920,
-			"byteOffset":11871360,
+			"byteOffset":11873496,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":73836,
-			"byteOffset":13355280,
+			"byteOffset":13357416,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":73836,
-			"byteOffset":13429116,
+			"byteOffset":13431252,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":49224,
-			"byteOffset":13502952,
+			"byteOffset":13505088,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":12306,
-			"byteOffset":13552176,
+			"byteOffset":13554312,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":43992,
-			"byteOffset":13564484,
+			"byteOffset":13566620,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":43992,
-			"byteOffset":13608476,
+			"byteOffset":13610612,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":29328,
-			"byteOffset":13652468,
+			"byteOffset":13654604,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":7332,
-			"byteOffset":13681796,
+			"byteOffset":13683932,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":43992,
-			"byteOffset":13689128,
+			"byteLength":360,
+			"byteOffset":13691264,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":43992,
-			"byteOffset":13733120,
+			"byteLength":540,
+			"byteOffset":13691624,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":29328,
-			"byteOffset":13777112,
+			"byteLength":540,
+			"byteOffset":13692164,
+			"target":34962
+		},
+		{
+			"buffer":0,
+			"byteLength":360,
+			"byteOffset":13692704,
 			"target":34962
 		}
 	],
@@ -795,7 +916,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":13806440,
+			"byteLength":13693064,
 			"uri":"scene.bin"
 		}
 	]
