@@ -22,6 +22,9 @@ function fadeInTitle(query) {
 }
 
 function startAnimation(){
+    
+
+
     const canvas = document.getElementById('canvas');
     canvas.style.display = 'block'; 
 
@@ -35,15 +38,10 @@ function startAnimation(){
 
     const sceneManager = new SceneManager(renderer, camera);
 
-    // Add scenes to the scene manager
-    // sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-
-    // sceneManager.addScene('ressource/model/foret/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:true, });
-    // sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false, toons:true, });
-    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/introduction.srt', '',{ loop: false, toons:true, });
-    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-    // sceneManager.addScene('ressource/model/foret/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, });
+    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false, toons:true, });
+    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/destruction.srt', 'ressource/audio/destruction.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/hiashi.srt', 'ressource/audio/hiashi.mp3',{ loop: true, skybox: false, toons:true, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+   
 
     // Load the first scene
     sceneManager.loadScene(
@@ -52,6 +50,12 @@ function startAnimation(){
         sceneManager.scenes[0].audioPath,
         sceneManager.scenes[0].params
     ).then(() => {
+        var audio = new Audio('ressource/audio/ost.mp3');
+
+        audio.loop = true;
+        audio.volume = 0.5;
+    
+        audio.play();
         sceneManager.eventEmitter.on("nextScene",(index) => {
             switch(index){
                 case 1:
@@ -59,16 +63,6 @@ function startAnimation(){
                     setTimeout(()=>{
                         fadeInTitle('.NrTitle')
                     },500)
-
-                    break;
-                case 3:
-                    fadeOutTitle("#Chapitre")
-
-                    setTimeout(()=>{
-                        const chapitre = document.querySelector("#Chapitre")
-                        chapitre.innerHTML = "Projet"
-                        fadeInTitle('.NrTitle')
-                    },3000)
                     break;
                 // case sceneManager.scenes.length :
                 //     fadeOutTitle(".canvas")
@@ -99,9 +93,9 @@ function startAnimation(){
     }
 }
 
-// // Ajouter un écouteur d'événement pour le bouton "Start" et le rendre invisible une fois l'animation lancée
 // document.getElementById("startAnimation").addEventListener('click', function() {
 //     startAnimation();
 // // });
+
 
 startAnimation();

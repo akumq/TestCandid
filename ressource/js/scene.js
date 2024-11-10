@@ -145,16 +145,7 @@ export class Scene {
               .catch((error) => console.error(error));
           }
 
-          if (this.audioPath) {
-            this.audio = new Audio(this.audioPath);
-            // Listen for audio end event
-            this.audio.addEventListener("ended", () => {
-              this.audioFinished = true;
-              this.checkFinished();
-            });
-            // Start audio
-            this.audio.play();
-          }
+         
 
           resolve(this);
         },
@@ -230,6 +221,16 @@ export class Scene {
     // Event Scene (click)
     this.eventEmitter.emit("click");
     if (!this.startTime) {
+      if (this.audioPath) {
+        this.audio = new Audio(this.audioPath);
+        // Listen for audio end event
+        this.audio.addEventListener("ended", () => {
+          this.audioFinished = true;
+          this.checkFinished();
+        });
+        // Start audio
+        this.audio.play();
+      }
       this.startTime = Date.now();
       this.intervalId = setInterval(() => {
         const currentTime = Date.now() - this.startTime;
