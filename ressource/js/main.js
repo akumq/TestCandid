@@ -91,11 +91,15 @@ function startAnimation(){
 //     startAnimation();
 // // });
 
-document.addEventListener("click", function() {
-    var audio = new Audio('ressource/audio/ost.mp3');
-    audio.loop = true;
-    audio.volume = 0.5;
-    audio.play();
-})
+var audio = new Audio('ressource/audio/ost.mp3');
+document.body.appendChild(audio);
+audio.loop = true;
+audio.volume = 0.5;
+
+document.body.addEventListener("click", function () {
+    console.log("OST lancé")
+    audio.play()
+},{once : true})
+
 
 startAnimation();
