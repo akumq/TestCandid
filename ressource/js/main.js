@@ -50,12 +50,6 @@ function startAnimation(){
         sceneManager.scenes[0].audioPath,
         sceneManager.scenes[0].params
     ).then(() => {
-        var audio = new Audio('ressource/audio/ost.mp3');
-
-        audio.loop = true;
-        audio.volume = 0.5;
-    
-        audio.play();
         sceneManager.eventEmitter.on("nextScene",(index) => {
             switch(index){
                 case 1:
@@ -97,5 +91,11 @@ function startAnimation(){
 //     startAnimation();
 // // });
 
+document.addEventListener("click", function() {
+    var audio = new Audio('ressource/audio/ost.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.play();
+})
 
 startAnimation();
