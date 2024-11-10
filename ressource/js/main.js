@@ -102,4 +102,6 @@ document.body.addEventListener("click", function () {
 },{once : true})
 
 
-startAnimation();
+// startAnimation();
+document.body.style.backgroundColor = "black";
+fadeInTitle(".resume");
