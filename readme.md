@@ -1,36 +1,68 @@
-# Description du Projet
+Voici un README technique plus détaillé pour votre projet Three.js :
 
-Ce projet est une application de scène 3D qui utilise la bibliothèque Three.js pour charger et afficher des modèles 3D, animer les positions de la caméra et afficher des sous-titres. L'application prend en charge plusieurs scènes, chacune avec son propre modèle 3D, ses sous-titres et ses clés de caméra.
+# Projet Three.js - Système de Scènes Interactives
 
-## Fichiers
+## Description
 
-- `scene.js`: Contient la logique principale pour le chargement et la gestion des scènes, y compris la classe `Scene`, la gestion des clés de caméra, l'analyse et l'affichage des sous-titres.
-- `main.js`: Initialise le moteur de rendu Three.js et la scène, crée des instances de la classe `Scene` pour chaque scène et gère le changement de scène et l'animation.
-- `index.html`: Le fichier HTML principal qui inclut les scripts et les styles nécessaires pour l'application.
-- `ressource/`: Contient diverses ressources telles que des modèles 3D, des fichiers de sous-titres et des images de skybox.
+Ce projet est une application web complexe qui utilise la bibliothèque Three.js pour créer une expérience immersive composée de plusieurs scènes 3D interconnectées. Les principales fonctionnalités incluent :
+
+- Chargement de scènes 3D à partir de fichiers GLTF
+- Gestion fluide de la transition entre les scènes
+- Lecture synchronisée d'audio et de sous-titres pour chaque scène
+- Contrôle dynamique du volume audio
+- Caméra avec animation par keyframes
+
+La structure du projet a été conçue pour être modulaire et extensible, permettant aux développeurs d'ajouter facilement de nouvelles fonctionnalités.
+
+## Architecture
+
+Le projet est organisé en plusieurs modules interdépendants :
+
+1. **main.js** : Point d'entrée de l'application, responsable du lancement de l'animation et de la gestion globale de l'expérience.
+2. **scene.js** : Définit la classe `Scene` qui encapsule tous les éléments d'une scène 3D (modèle, caméra, audio, sous-titres, etc.) et gère leur comportement.
+3. **volumeManager.js** : Implémente un gestionnaire de volume audio centralisé, permettant un contrôle précis du volume dans l'ensemble de l'application.
+4. **eventEmitter.js** : Fournit un simple système d'événements custom pour la communication entre les différents modules.
+5. **sceneManager.js** : Coordonne le chargement et la transition entre les différentes scènes, en s'appuyant sur la classe `Scene`.
+
+### Classe `Scene`
+
+La classe `Scene` est le cœur du système et gère tous les aspects d'une scène 3D, notamment :
+
+- Chargement du modèle 3D à partir d'un fichier GLTF
+- Gestion de la caméra et de son animation par keyframes
+- Lecture synchronisée de l'audio et des sous-titres associés
+- Hooks pour les événements de fin de scène, de clic utilisateur, etc.
+
+Elle s'appuie sur les bibliothèques Three.js, gsap (pour l'animation de la caméra) et sur un système d'événements custom implémenté dans `eventEmitter.js`.
+
+### Classe `SceneManager`
+
+Le `SceneManager` est responsable de la gestion du flux de navigation entre les différentes scènes. Il gère le chargement, la transition et le déchargement des scènes, en s'appuyant sur la classe `Scene`. Il expose également des méthodes permettant d'ajouter de nouvelles scènes et de passer d'une scène à l'autre.
+
+### Classe `VolumeManager`
+
+Le `VolumeManager` est un singleton qui centralise la gestion du volume audio de l'application. Il permet de créer et de contrôler dynamiquement le volume des différentes pistes audio utilisées dans les scènes.
 
 ## Utilisation
 
-1. Ouvrez `index.html` dans un navigateur web.
-2. L'application chargera la première scène et affichera le modèle 3D correspondant, les sous-titres et animera la position de la caméra en fonction des clés de caméra.
-3. Après la fin de la première scène, l'application passera à la deuxième scène et répétera le processus.
+1. Clonez le dépôt Git sur votre machine.
+2. Installez les dépendances si nécessaire (Three.js, gsap, etc.).
+3. Démarrez un serveur web local pour servir les fichiers du projet.
+4. Ouvrez l'application dans votre navigateur.
 
-## Fonctionnalités
+## Personnalisation et extensibilité
 
-- Charger et afficher des modèles 3D à l'aide de GLTFLoader.
-- Extraire les positions de la caméra de la scène et créer des clés de caméra.
-- Animer la position de la caméra en fonction des clés de caméra à l'aide de la bibliothèque GSAP.
-- Analyser les fichiers de sous-titres SRT et afficher les sous-titres au moment approprié.
-- Charger et définir les images de skybox.
-- Basculer entre plusieurs scènes et décharger la scène actuelle avant de charger la nouvelle.
-- Gérer les événements de redimensionnement de la fenêtre pour mettre à jour le rapport d'aspect de la caméra et la taille du moteur de rendu.
+Pour personnaliser l'expérience ou ajouter de nouvelles fonctionnalités, les développeurs peuvent :
 
-## Dépendances
+- Ajouter de nouvelles scènes en modifiant le fichier `main.js`.
+- Ajuster les paramètres de chaque scène (skybox, brouillard, animation en boucle, etc.) dans le fichier `scene.js`.
+- Étendre les classes existantes (Scene, SceneManager, VolumeManager) pour ajouter de nouvelles fonctionnalités.
+- Intégrer de nouvelles bibliothèques ou fonctionnalités (interactions utilisateur, effets visuels, etc.) en les important dans les modules appropriés.
 
-- Three.js (v0.121.1)
-- GSAP (GreenSock Animation Platform)
-- jQuery (pour l'affichage des sous-titres)
+La structure modulaire du projet facilite grandement l'ajout de nouvelles fonctionnalités et l'évolutivité de l'application à long terme.
 
-## Licence
+## Contribution
+
+Les contributions des développeurs sont les bienvenues ! N'hésitez pas à signaler les bugs, à proposer des améliorations ou à soumettre des pull requests.
 
 Ce projet est sous licence [MIT License](LICENSE).

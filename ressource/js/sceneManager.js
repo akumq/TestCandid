@@ -24,6 +24,14 @@ export class SceneManager {
     });
   }
 
+  skipCurrentScene() {
+      if (this.currentScene) {
+        this.currentScene.unload();
+      }
+      this.loadNextScene();
+  }
+
+
   addScene(gltfPath, srtPath = null, audioPath = null, params = {}) {
     this.scenes.push({ gltfPath, srtPath, audioPath, params });
   }
@@ -51,6 +59,9 @@ export class SceneManager {
       this.currentScene.eventEmitter.on('finished', () => {
         this.loadNextScene();
       });
+      this.currentScene.eventEmitter.on('click',()=> {
+        this.eventEmitter.emit("click");
+      })
       this.currentScene
         .load()
         .then((scene) => {

@@ -1,6 +1,9 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
 import { EventEmitter } from "./eventEmitter.js"
+import { VolumeManager } from "./volumeManager.js";
+
+const volumeManager = new VolumeManager();
 
 class CamKeyFrame extends THREE.Vector3 {
   constructor(position, rotation, time, duration) {
@@ -217,37 +220,55 @@ export class Scene {
     });
   }
 
+  setAudioVolume(volume) {
+    if (this.audio) {
+      this.audio.volume = volume;
+    }
+  }
+
   handleClick() {
-    // Event Scene (click)
+    console.log("test")
     this.eventEmitter.emit("click");
-    if (!this.startTime) {
-      if (this.audioPath) {
-        this.audio = new Audio(this.audioPath);
-        // Listen for audio end event
-        this.audio.addEventListener("ended", () => {
-          this.audioFinished = true;
-          this.checkFinished();
-        });
-        // Start audio
-        this.audio.play();
-      }
-      this.startTime = Date.now();
-      this.intervalId = setInterval(() => {
-        const currentTime = Date.now() - this.startTime;
-        this.displaySubtitle(currentTime);
-        if (currentTime >= this.subtitles[this.subtitles.length - 1].end) {
-          clearInterval(this.intervalId);
-          this.startTime = null;
-          this.intervalId = null;
-          this.isSubtitlePlaying = false;
-          this.subtitlesFinished = true;
-          this.checkFinished();
+
+    // Vérifier si l'utilisateur a cliqué sur le bouton "Skip"
+    const skipButton = document.getElementById("skip");
+    if (skipButton && skipButton.contains(event.target)) {
+        this.eventEmitter.emit("skipScene");
+        return;
+    }
+
+    if (!this.isTransitioning) { 
+      if (!this.startTime) {
+        if (this.audioPath) {
+            this.audio = volumeManager.createAudio(this.audioPath);
+
+            // Listen for audio end event
+            this.audio.addEventListener("ended", () => {
+                this.audioFinished = true;
+                this.checkFinished();
+            });
+            // Start audio
+            this.audio.play();
         }
-      }, 100);
+        this.startTime = Date.now();
+        this.intervalId = setInterval(() => {
+            const currentTime = Date.now() - this.startTime;
+            this.displaySubtitle(currentTime);
+            if (currentTime >= this.subtitles[this.subtitles.length - 1].end) {
+                clearInterval(this.intervalId);
+                this.startTime = null;
+                this.intervalId = null;
+                this.isSubtitlePlaying = false;
+                this.subtitlesFinished = true;
+                this.checkFinished();
+            }
+        }, 100);
     }
 
     this.interpolateCamera();
-  }
+    }
+   
+}
 
   parseSrt(srtContent) {
     const lines = srtContent.split("\n");

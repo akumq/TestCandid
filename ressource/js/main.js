@@ -1,5 +1,11 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 import { SceneManager } from './sceneManager.js';
+import { VolumeManager } from "./volumeManager.js";
+
+const volumeManager = new VolumeManager();
+
+const slider = document.querySelector("#volumeSlider");
+volumeManager.setSlider(slider);
 
 function fadeOutTitle(query) {
     const title = document.querySelector(query);
@@ -14,7 +20,7 @@ function fadeOutTitle(query) {
 function fadeInTitle(query) {
     const title = document.querySelector(query);
     if(title){
-        console.log(title)
+        // console.log(title)
         title.classList.remove('hidden');
         title.classList.remove('fadeOut');
         title.classList.add('fadeIn');
@@ -22,8 +28,6 @@ function fadeInTitle(query) {
 }
 
 function startAnimation(){
-    
-
 
     const canvas = document.getElementById('canvas');
     canvas.style.display = 'block'; 
@@ -37,8 +41,7 @@ function startAnimation(){
     
 
     const sceneManager = new SceneManager(renderer, camera);
-
-    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false, toons:true, });
+    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false,skybox:true, toons:true });
     sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/destruction.srt', 'ressource/audio/destruction.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
     sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/hiashi.srt', 'ressource/audio/hiashi.mp3',{ loop: true, skybox: false, toons:true, fog: {color: 0xec9f53, near: 18, far: 200 }, });
    
@@ -50,7 +53,16 @@ function startAnimation(){
         sceneManager.scenes[0].audioPath,
         sceneManager.scenes[0].params
     ).then(() => {
+        document.querySelector("#skip").addEventListener("click",() => {
+            sceneManager.skipCurrentScene();
+        })
+        sceneManager.eventEmitter.on("click",()=>{
+            console.log("test")
+            fadeOutTitle("#skip")
+        })
+
         sceneManager.eventEmitter.on("nextScene",(index) => {
+            
             switch(index){
                 case 1:
                     fadeOutTitle('.TitrePrincipale')
@@ -69,12 +81,9 @@ function startAnimation(){
         sceneManager.eventEmitter.on("noSceneLeft",() => {
             fadeOutTitle("#canvas");
             fadeOutTitle("#Chapitre")
-
             document.body.style.backgroundColor = "black";
+            console.log("test")
             fadeInTitle(".resume");
-            // console.log( document.querySelector("#Chapitre"));
-            // document.querySelector("#Chapitre").classList.add('hidden');
-            // console.log( document.querySelector("#Chapitre"));
         });
 
         animate();
@@ -87,14 +96,10 @@ function startAnimation(){
     }
 }
 
-// document.getElementById("startAnimation").addEventListener('click', function() {
-//     startAnimation();
-// // });
-
-var audio = new Audio('ressource/audio/ost.mp3');
+const audio = volumeManager.createAudio('ressource/audio/ost.mp3');
 document.body.appendChild(audio);
 audio.loop = true;
-audio.volume = 0.5;
+volumeManager.setMaxVolume('ressource/audio/ost.mp3', 0.5);
 
 document.body.addEventListener("click", function () {
     console.log("OST lancé")
@@ -103,5 +108,7 @@ document.body.addEventListener("click", function () {
 
 
 startAnimation();
+
+
 // document.body.style.backgroundColor = "black";
 // fadeInTitle(".resume");
