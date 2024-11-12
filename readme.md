@@ -1,5 +1,3 @@
-Voici un README technique plus détaillé pour votre projet Three.js :
-
 # Projet Three.js - Système de Scènes Interactives
 
 ## Description
