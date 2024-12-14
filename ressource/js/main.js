@@ -41,9 +41,10 @@ function startAnimation(){
     
 
     const sceneManager = new SceneManager(renderer, camera);
-    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false,skybox:true, toons:true });
-    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/destruction.srt', 'ressource/audio/destruction.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/hiashi.srt', 'ressource/audio/hiashi.mp3',{ loop: true, skybox: false, toons:true, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/musique/scene.gltf', 'ressource/srt/example.srt', '',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/introduction.srt', 'ressource/audio/introduction.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/suna/scene.gltf', 'ressource/srt/sumatsu.srt', 'ressource/audio/sumatsu.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });+
+    // sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/hiashi.srt', 'ressource/audio/hiashi.mp3',{ loop: true, skybox: false, toons:true, fog: {color: 0xec9f53, near: 18, far: 200 }, });
    
 
     // Load the first scene
@@ -110,5 +111,5 @@ document.body.addEventListener("click", function () {
 startAnimation();
 
 
-// document.body.style.backgroundColor = "black";
-// fadeInTitle(".resume");
+document.body.style.backgroundColor = "black";
+fadeInTitle(".resume");
