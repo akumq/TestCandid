@@ -42,7 +42,7 @@ function startAnimation(){
     
 
     const sceneManager = new SceneManager(renderer, camera);
-    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/nacim.srt', 'ressource/audio/nacim.wav',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
+    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/nacim.srt', 'ressource/audio/nacim.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
 
     
     // Load the first scene
