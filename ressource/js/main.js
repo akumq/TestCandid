@@ -101,7 +101,7 @@ function startAnimation(){
 const audio = volumeManager.createAudio('ressource/audio/ost.mp3');
 document.body.appendChild(audio);
 audio.loop = true;
-volumeManager.setMaxVolume('ressource/audio/ost.mp3', 0.5);
+volumeManager.setMaxVolume('ressource/audio/ost.mp3', 0.3);
 
 document.body.addEventListener("click", function () {
     console.log("OST lancé")
