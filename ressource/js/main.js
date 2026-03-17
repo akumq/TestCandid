@@ -1,11 +1,5 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 import { SceneManager } from './sceneManager.js';
-import { VolumeManager } from "./volumeManager.js";
-
-const volumeManager = new VolumeManager();
-
-const slider = document.querySelector("#volumeSlider");
-volumeManager.setSlider(slider);
 
 function fadeOutTitle(query) {
     const title = document.querySelector(query);
@@ -97,17 +91,6 @@ function startAnimation(){
         renderer.render(sceneManager.currentScene.scene, camera);
     }
 }
-
-const audio = volumeManager.createAudio('ressource/audio/ost.mp3');
-document.body.appendChild(audio);
-audio.loop = true;
-volumeManager.setMaxVolume('ressource/audio/ost.mp3', 0.3);
-
-document.body.addEventListener("click", function () {
-    console.log("OST lancé")
-    audio.play()
-},{once : true})
-
 
 startAnimation();
 
