@@ -322,13 +322,17 @@ export class Scene {
     );
 
     if (subtitle) {
-      this.subtitleElement.textContent = subtitle.text;
+      if (this.subtitleElement) {
+        this.subtitleElement.textContent = subtitle.text;
+      }
       this.isSubtitlePlaying = true;
     } else {
       if (this.isSubtitlePlaying) {
         const nextSubtitle = this.subtitles.find((s) => s.start > currentTime);
         if (!nextSubtitle || nextSubtitle.start > currentTime + 100) {
-          this.subtitleElement.textContent = "";
+          if (this.subtitleElement) {
+            this.subtitleElement.textContent = "";
+          }
           this.isSubtitlePlaying = false;
         }
       }

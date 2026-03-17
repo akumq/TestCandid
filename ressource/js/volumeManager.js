@@ -34,6 +34,7 @@ export class VolumeManager {
     }
 
     setSlider(slider) {
+        if (!slider) return;
         this.slider = slider;
 
         this.slider.addEventListener('input', () => {

@@ -9,6 +9,7 @@ volumeManager.setSlider(slider);
 
 function fadeOutTitle(query) {
     const title = document.querySelector(query);
+    if (!title) return;
     title.classList.remove('fadeIn');
     title.classList.add('fadeOut');
 
@@ -41,11 +42,9 @@ function startAnimation(){
     
 
     const sceneManager = new SceneManager(renderer, camera);
-    sceneManager.addScene('ressource/model/scene2/scene.gltf', 'ressource/srt/example.srt', '',{ loop: false,skybox:true, toons:true });
-    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/destruction.srt', 'ressource/audio/destruction.mp3',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-    sceneManager.addScene('ressource/model/scene1/scene.gltf', 'ressource/srt/hiashi.srt', 'ressource/audio/hiashi.mp3',{ loop: true, skybox: false, toons:true, fog: {color: 0xec9f53, near: 18, far: 200 }, });
-   
+    sceneManager.addScene('ressource/model/introduction/scene.gltf', 'ressource/srt/nacim.srt', 'ressource/audio/nacim.wav',{ loop: true, skybox: true, toons:false, fog: {color: 0xec9f53, near: 18, far: 200 }, });
 
+    
     // Load the first scene
     sceneManager.loadScene(
         sceneManager.scenes[0].gltfPath,
@@ -53,9 +52,12 @@ function startAnimation(){
         sceneManager.scenes[0].audioPath,
         sceneManager.scenes[0].params
     ).then(() => {
-        document.querySelector("#skip").addEventListener("click",() => {
-            sceneManager.skipCurrentScene();
-        })
+        const skipBtn = document.querySelector("#skip");
+        if (skipBtn) {
+            skipBtn.addEventListener("click",() => {
+                sceneManager.skipCurrentScene();
+            });
+        }
         sceneManager.eventEmitter.on("click",()=>{
             console.log("test")
             fadeOutTitle("#skip")
